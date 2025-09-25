@@ -67,7 +67,6 @@ table th {
   grid-template-columns: 2fr 1fr; /* Left: company, Right: invoice-meta */
   gap: 15px;
   align-items: start; /* align top of both sections */
-  margin-bottom: 20px;
   color: #333;
 }
 
@@ -123,7 +122,7 @@ table th {
 
 .double-grid {
   grid-template-columns: 1fr 1fr;
-  margin-top: 10px;
+  margin-top: 5px;
   color: #333;
 }
 
