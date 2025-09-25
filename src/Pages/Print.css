@@ -1,0 +1,244 @@
+/* ===========================
+   Invoice Styling (Screen + Print)
+   =========================== */
+
+/* Main container */
+.invoice {
+  background: white;
+  padding: 20px;
+  font-size: 12px;
+  line-height: 1.5;
+  max-width: 1000px;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+}
+
+/* Headings */
+.invoice h1 {
+  font-size: 20px;
+  color: #18848e;
+  margin-bottom: 5px;
+}
+.invoice h3 {
+  font-size: 14px;
+  margin: 0;
+}
+.invoice h4 {
+  font-size: 13px;
+  margin: 5px 0;
+  color: #18848e;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  font-size: 12px;
+}
+table td,
+table th {
+  border: 1px solid #999;
+  padding: 4px 6px;
+}
+table th {
+  color: black;
+  text-align: left;
+  background-color: #18848e;
+}
+
+/* Grid layouts */
+.double-grid,
+.triple-grid,
+.header-grid {
+  display: grid;
+  gap: 12px;
+}
+.triple-grid {
+  grid-template-columns: 1fr 1fr; /* 2 columns, each 50% width */
+}
+
+.header-grid {
+  grid-template-columns: 2fr 1fr;
+}
+.header-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Left: company, Right: invoice-meta */
+  gap: 15px;
+  align-items: start; /* align top of both sections */
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Left company info box */
+.company-info {
+  background-color: #f0f8fa; /* subtle background like invoice-meta */
+  border-left: 4px solid #18848e; /* accent color */
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+
+  /* Add these */
+  display: flex;
+  flex-direction: column; /* stack children vertically */
+  align-items: flex-start; /* align content to the left */
+  text-align: left; /* ensures text inside <p> is left-aligned */
+}
+
+.company-info h1 {
+  font-size: 18px;
+  color: #18848e;
+  margin-bottom: 8px;
+  text-align: left; /* optional, reinforces left alignment */
+}
+
+/* Invoice meta (right side) */
+.invoice-meta {
+  background-color: #f0f8fa;
+  border-left: 4px solid #18848e;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.invoice-meta h3 {
+  font-size: 16px;
+  color: #18848e;
+  margin-bottom: 8px;
+}
+
+.invoice-meta .meta-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+}
+
+.invoice-meta .meta-row span {
+  font-weight: 500;
+  color: #333;
+}
+
+.double-grid {
+  grid-template-columns: 1fr 1fr;
+  margin-top: 10px;
+  color: #333;
+}
+
+/* Notes */
+.terms,
+.delivery {
+  font-size: 11px;
+  margin-top: 10px;
+  line-height: 1.4;
+  color:#333 
+}
+
+/* No-print section */
+.no-print {
+  margin-top: 10px;
+  text-align: center;
+}
+.title-row {
+  
+  font-weight: bold;
+  color: white;
+}
+ thead tr.title-row td {
+  text-align: center;
+  font-weight: bold;
+  background-color: #f0f8fa; 
+  font-size: 13px;
+  padding: 6px 0;
+  color: #18848e;
+ 
+}
+.mini{
+  color: #333;
+  background-color: #f0f8fa;
+}
+/* ===========================
+   Print Styles
+   =========================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 3mm; /* very small margins to maximize space */
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .invoice {
+    width: 100%;
+    max-width: none;
+    padding: 5px 5px;
+    font-size: 9px; /* reduced font size */
+    line-height: 1.05; /* tighter line spacing */
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+    transform: scale(1); /* slight uniform shrink */
+    transform-origin: top left;
+    page-break-inside: avoid;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.5px; /* slightly smaller font for tables */
+  }
+  table td,
+  table th {
+    border: 1px solid #ccc;
+    padding: 1.5px 3px; /* reduced padding */
+  }
+  table th {
+    background: #18848e;
+    color: white;
+    text-align: center;
+  }
+
+  table tr.highlight td {
+    background-color: #f0f8fa;
+    font-weight: bold;
+  }
+
+  .terms,
+  .delivery {
+    font-size: 7.5px; /* reduce terms section font */
+    line-height: 1.1;
+  }
+
+  html,
+  body {
+    height: auto;
+    overflow: visible !important;
+  }
+}
+@media print {
+  .company-info,
+  .invoice-meta {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+  .company-info h1,
+  .invoice-meta h3 {
+    font-size: 12px;
+  }
+}
+
+/* ===========================
+   End of Print Styles
+   =========================== */
